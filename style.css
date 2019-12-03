@@ -1,0 +1,22 @@
+form {display: none;}
+form input {
+    width: 250px;
+    margin-left: 15px;
+}
+form label {
+    width: 120px;
+    display: inline-block;
+}
+form #btn2 p, form #btn3 p{
+    margin: 0px;
+}
+#gridCont1,  #gridCont2{
+    margin-top: 30px;
+    display: none;
+    grid-template-columns: repeat(9, 120px);
+    grid-template-rows: repeat(1, 50px);
+    grid-gap: 5px;
+}
+.gridIt{
+    border: 1px solid black;
+}
