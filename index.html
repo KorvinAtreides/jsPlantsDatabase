@@ -18,18 +18,18 @@
 
     <form id="maket">
         <h2>New Plant:</h2>
-        <p><label for="inName">Название</label><input type="text" id="inName" required></p>
-        <p><label for="inVid">Вид</label><input type="text" id="inVid" required></p>
-        <p><label for="inAge">Возраст</label><input type="text" id="inAge" required></p>
-        <p><label for="inKind">Класс</label><input type="text" id="inKind" required></p>
-        <p><label for="inAreal">Ареал произрастания</label><input type="text" id="inAreal" required></p>
-        <p><label for="inFirst">Первооткры&shy;ватель</label><input type="text" id="inFirst" required></p>
+        <p><label for="inName">Название</label><input type="text" id="inName" required pattern="^[a-zA-Z]+$"></p>
+        <p><label for="inVid">Вид</label><input type="text" id="inVid" required pattern="^[a-zA-Z]+$"></p>
+        <p><label for="inAge">Возраст</label><input type="text" id="inAge" required pattern="^[ 0-9]+$" ></p>
+        <p><label for="inKind">Класс</label><input type="text" id="inKind" required pattern="^[a-zA-Z]+$"></p>
+        <p><label for="inAreal">Ареал произрастания</label><input type="text" id="inAreal" required pattern="^[a-zA-Z]+$"></p>
+        <p><label for="inFirst">Первооткры&shy;ватель</label><input type="text" id="inFirst" required pattern="^[a-zA-Z]+$"></p>
 
-        <p id="Flower"><label for="inFlower">Pазмер соцветия</label><input type="text" id="inFlower"></p>
-        <p id="KindFlower"><label for="inKindFlower">Тип соцветия</label><input type="text" id="inKindFlower"></p>
+        <p id="Flower"><label for="inFlower">Pазмер соцветия</label><input type="text" id="inFlower" pattern="^[ 0-9]+$"></p>
+        <p id="KindFlower"><label for="inKindFlower">Тип соцветия</label><input type="text" id="inKindFlower" pattern="^[a-zA-Z]+$"></p>
 
-        <p id="Width"><label for="inWidth">Толщина ствола</label><input type="text" id="inWidth"></p>
-        <p id="Length"><label for="inLength">Pазмер шишки</label><input type="text" id="inLength"></p>
+        <p id="Width"><label for="inWidth">Толщина ствола</label><input type="text" id="inWidth" pattern="^[ 0-9]+$"></p>
+        <p id="Length"><label for="inLength">Pазмер шишки</label><input type="text" id="inLength" pattern="^[ 0-9]+$"></p>
 
         <button type="button" id="btn2"></button>
         <button type="reset" id="btn3"></button>

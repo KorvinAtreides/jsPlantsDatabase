@@ -16,6 +16,8 @@ var myMap = new Map();
 var changeBtns = document.getElementsByClassName("changeBtn");
 var deleteBtns = document.getElementsByClassName("deleteBtn");
 
+var inpyts = document.getElementsByTagName("input");
+
 btn1.innerHTML = '<p>Create<p>';
 btn1.style.cssText =`color: red;
 background-color: green;
@@ -117,7 +119,17 @@ function Needles(width, length) {
     this.getWidth = function(){        return this.width;    }
     this.getLength = function(){        return this.length;    }
 }    
-    
+function inpytVal(){
+    for(let inpyt of inpyts){
+        inpyt.addEventListener ("input", function (event) {
+            if (inpyt.validity.valid == false) {
+                inpyt.value = ""; 
+                alert('неверное значение');
+              }        
+      });
+    }
+}
+inpytVal(); 
 document.getElementById("btn2").addEventListener('click', function(){
     if ((inName.value == '' || inVid.value == '' || inAge.value == '' || inKind.value == '' || inAreal.value == '' || inFirst.value == '')
     ||(val == 'value1'&&(inFlower.value == ''|| inKindFlower.value == ''))||(val == 'value2'&&(inWidth.value == ''|| inLength.value == ''))){
