@@ -1,1 +1,1 @@
-https://lordkorvin.github.io/jsHome4/.
+https://lordkorvin.github.io/jsPlantsDatabase/.
