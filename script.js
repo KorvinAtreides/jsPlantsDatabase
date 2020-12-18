@@ -3,15 +3,22 @@ var N2 = 1;
 var myMap = new Map();
 
 //create select
-btn1.onclick = function () {
-  let selD = select1.style.display;
-  if (selD == "none" || selD == "") {
+newPlantbtn.onclick = function () {
+  if (select1.style.display != "block") {
     select1.style.display = "block";
   }
 };
 
 function makeMaketVisible(val1) {
   maket.style.display = "block";
+  let spans = document.querySelectorAll("form span");
+  for (let span of spans) {
+    span.style.cssText = `
+    display: none;
+    color: red;
+    font-size: large;`;
+  }
+
   if (val1 == "value1") {
     Width.style.display = "none";
     Length.style.display = "none";
@@ -34,8 +41,7 @@ function makeMaketVisible(val1) {
 }
 
 select1.addEventListener("change", function () {
-  val = this.value;
-  makeMaketVisible(val);
+  makeMaketVisible(this.value);
 });
 
 function Plant(name, vid, age, kind, areal, first) {
@@ -86,36 +92,37 @@ function Needles(width, length) {
     return this.length;
   };
 }
+
 function inpytVal() {
   let inpyts = document.getElementsByTagName("input");
   for (let inpyt of inpyts) {
     inpyt.addEventListener("input", function (event) {
       if (inpyt.validity.valid == false) {
-        inpyt.value = "";
-        alert("неверное значение");
+        inpyt.nextElementSibling.style.cssText = `
+          display: inline-block;
+          color: red;
+          font-size: large;`;
+      } else {
+        inpyt.nextElementSibling.style.cssText = `display: none;`;
       }
     });
   }
 }
 inpytVal();
-btn2.addEventListener("click", function () {
-  if (
-    inName.value == "" ||
-    inVid.value == "" ||
-    inAge.value == "" ||
-    inKind.value == "" ||
-    inAreal.value == "" ||
-    inFirst.value == "" ||
-    (val == "value1" && (inFlower.value == "" || inKindFlower.value == "")) ||
-    (val == "value2" && (inWidth.value == "" || inLength.value == ""))
-  ) {
-    alert("не все поля заполнены");
+
+saveBtn.addEventListener("click", function () {
+  let inpyts = document.getElementsByTagName("input");
+  let valid = true;
+  for (let inpyt of inpyts) {
+    if (!inpyt.validity.valid) {
+      valid = false;
+    }
+  }
+  if (!valid) {
+    alert("Error: check validity of the form");
   } else {
-    select1.style.display = "none";
-    select1.value = "noneVol";
-    maket.style.display = "none";
     let today = new Date();
-    if (val == "value1") {
+    if (select1.value == "value1") {
       let newplant = new Leaves(inFlower.value, inKindFlower.value);
       newplant.name = inName.value;
       newplant.vid = inVid.value;
@@ -141,7 +148,11 @@ btn2.addEventListener("click", function () {
         today
       );
       myMap.set(
-        "change" + today.getHours() + today.getMinutes() + today.getSeconds(),
+        "change" +
+          today.getHours() +
+          today.getMinutes() +
+          today.getSeconds() +
+          "0",
         newplant
       );
     } else {
@@ -174,7 +185,7 @@ btn2.addEventListener("click", function () {
           today.getHours() +
           today.getMinutes() +
           today.getSeconds() +
-          "",
+          "0",
         newplant
       );
     }
@@ -190,6 +201,9 @@ btn2.addEventListener("click", function () {
     inKindFlower.value = "";
     inWidth.value = "";
     inLength.value = "";
+    select1.style.display = "none";
+    select1.value = "noneVol";
+    maket.style.display = "none";
   }
 });
 
@@ -199,6 +213,7 @@ function changePlant() {
     changeBtn.addEventListener("click", function () {
       let el = changeBtn.parentNode;
       let newplant = myMap.get(el.id);
+      select1.style.display = "block";
       inName.value = newplant.name;
       inVid.value = newplant.vid;
       inAge.value = newplant.age;
@@ -211,7 +226,6 @@ function changePlant() {
           "grid-template-rows",
           "repeat(" + N1 + ", 50px)"
         );
-        select1.style.display = "block";
         select1.value = "value1";
         makeMaketVisible("value1");
         inFlower.value = newplant.flower;
@@ -225,7 +239,6 @@ function changePlant() {
           "grid-template-rows",
           "repeat(" + N2 + ", 50px)"
         );
-        select1.style.display = "block";
         select1.value = "value2";
         makeMaketVisible("value2");
         inWidth.value = newplant.width;
@@ -235,8 +248,7 @@ function changePlant() {
       for (let i = 1; i < 9; i++) {
         el.previousSibling.remove();
       }
-      changeBtn.parentElement.remove();
-      event.stopPropagation();
+      el.remove();
     });
   }
 }
@@ -252,12 +264,6 @@ function deletePlant() {
           "grid-template-rows",
           "repeat(" + N1 + ", 50px)"
         );
-        myMap.delete(el.id);
-        for (let i = 1; i < 9; i++) {
-          el.previousSibling.remove();
-        }
-        el.remove();
-        event.stopPropagation();
       }
       if (el.parentNode == gridCont2) {
         N2--;
@@ -265,60 +271,50 @@ function deletePlant() {
           "grid-template-rows",
           "repeat(" + N2 + ", 50px)"
         );
-        myMap.delete(el.id);
-        for (let i = 1; i < 9; i++) {
-          el.previousSibling.remove();
-        }
-        el.remove();
-        event.stopPropagation();
       }
+      myMap.delete(el.id);
+      for (let i = 1; i < 9; i++) {
+        el.previousSibling.remove();
+      }
+      el.remove();
     });
   }
 }
 
-saveAllBtn.addEventListener("click", function () {
-  localStorage.setItem("grid1", gridCont1.innerHTML);
-  localStorage.setItem("grid2", gridCont2.innerHTML);
-  localStorage.setItem("N1", N1);
-  localStorage.setItem("N2", N2);
-  localStorage.setItem("Map", JSON.stringify([...myMap]));
+putServBtn.addEventListener("click", function () {
+  let request = new XMLHttpRequest();
+  request.open("GET", "http://localhost:3000/helps", false);
+  request.send();
+  let responseObj = JSON.parse(request.response);
+  let data = [];
+  for (
+    let i = responseObj.length + 1;
+    i < responseObj.length + [...myMap].length + 1;
+    i++
+  ) {
+    data[i] = { id: i, plant: [...myMap][i] };
+  }
+  console.log(data);
+  //   fetch("http://localhost:3000/helps", {
+  //     method: "post",
+  //     headers: {
+  //       Accept: "application/json, text/plain, */*",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
 });
 
-function loadAll() {
-  if (localStorage.getItem("grid1")) {
-    myMap = new Map(JSON.parse(localStorage.getItem("Map")));
-    gridCont1.innerHTML = localStorage.getItem("grid1");
-    gridCont2.innerHTML = localStorage.getItem("grid2");
-    document.getElementById("lef").style.display = "block";
-    document.getElementById("rif").style.display = "block";
-    saveAllBtn.style.display = "block";
-    putServBtn.style.display = "block";
-    takeFromServBtn.style.display = "block";
-    gridCont1.style.setProperty("display", "grid", "important");
-    gridCont2.style.setProperty("display", "grid", "important");
-    N1 = localStorage.getItem("N1");
-    N2 = localStorage.getItem("N2");
-    gridCont1.style.setProperty(
-      "grid-template-rows",
-      "repeat(" + N1 + ", 50px)"
-    );
-    gridCont2.style.setProperty(
-      "grid-template-rows",
-      "repeat(" + N2 + ", 50px)"
-    );
-    changePlant();
-    deletePlant();
+getData.addEventListener("click", function () {
+  let request = new XMLHttpRequest();
+  request.open("GET", "http://localhost:3000/helps", false);
+  request.send();
+  let responseObj = JSON.parse(request.response);
+  console.log(responseObj);
+  for (let i = 0; i < responseObj.length; i++) {
+    myMap.set(responseObj[i].plant[0], responseObj[i].plant[1]);
   }
-}
-putServBtn.addEventListener("click", function () {
-  fetch("http://localhost:3000/helps", {
-    method: "post",
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify([...myMap]),
-  });
+  console.log(myMap);
 });
 
 takeFromServBtn.addEventListener("click", function () {
@@ -339,13 +335,7 @@ takeFromServBtn.addEventListener("click", function () {
           i,
         responseObj.get(key)
       );
-      let newplant = myMap.get(
-        "change" +
-          today.getHours() +
-          today.getMinutes() +
-          today.getSeconds() +
-          i
-      );
+      let newplant = responseObj.get(key);
       if (newplant.flower != undefined) {
         N1++;
         gridCont1.style.setProperty(
@@ -444,4 +434,3 @@ function addGrids(
 
 changePlant();
 deletePlant();
-loadAll();

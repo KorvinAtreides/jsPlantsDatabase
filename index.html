@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PlantsDatabase</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./fontawesome/css/all.css" />
   </head>
 
   <body>
-    <div class="btn" id="btn1"><p>Create</p></div>
+    <div class="btn" id="newPlantbtn"><p>Create</p></div>
     <select id="select1" required>
       <option value="noneVol" disabled selected>Выберите подкласс</option>
       <option value="value1">Лиственное</option>
@@ -19,50 +20,60 @@
     <form id="maket">
       <h2>New Plant:</h2>
       <p>
-        <label for="inName">Название</label
-        ><input type="text" id="inName" required pattern="^[a-zA-Z]+$" />
+        <label for="inName">Название</label>
+        <input type="text" id="inName" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inVid">Вид</label
-        ><input type="text" id="inVid" required pattern="^[a-zA-Z]+$" />
+        <label for="inVid">Вид</label>
+        <input type="text" id="inVid" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inAge">Возраст</label
-        ><input type="text" id="inAge" required pattern="^[ 0-9]+$" />
+        <label for="inAge">Возраст</label>
+        <input type="text" id="inAge" required pattern="^[ 0-9]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inKind">Класс</label
-        ><input type="text" id="inKind" required pattern="^[a-zA-Z]+$" />
+        <label for="inKind">Класс</label>
+        <input type="text" id="inKind" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inAreal">Ареал произра&shy;ста&shy;ния</label
-        ><input type="text" id="inAreal" required pattern="^[a-zA-Z]+$" />
+        <label for="inAreal">Ареал произра&shy;ста&shy;ния</label>
+        <input type="text" id="inAreal" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inFirst">Первооткры&shy;ватель</label
-        ><input type="text" id="inFirst" required pattern="^[a-zA-Z]+$" />
+        <label for="inFirst">Первооткры&shy;ватель</label>
+        <input type="text" id="inFirst" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
 
       <p id="Flower">
-        <label for="inFlower">Pазмер соцветия</label
-        ><input type="text" id="inFlower" pattern="^[ 0-9]+$" />
+        <label for="inFlower">Pазмер соцветия</label>
+        <input type="text" id="inFlower" pattern="^[ 0-9]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p id="KindFlower">
-        <label for="inKindFlower">Тип соцветия</label
-        ><input type="text" id="inKindFlower" pattern="^[a-zA-Z]+$" />
+        <label for="inKindFlower">Тип соцветия</label>
+        <input type="text" id="inKindFlower" pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
 
       <p id="Width">
-        <label for="inWidth">Толщина ствола</label
-        ><input type="text" id="inWidth" pattern="^[ 0-9]+$" />
+        <label for="inWidth">Толщина ствола</label>
+        <input type="text" id="inWidth" pattern="^[ 0-9]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p id="Length">
-        <label for="inLength">Pазмер шишки</label
-        ><input type="text" id="inLength" pattern="^[ 0-9]+$" />
+        <label for="inLength">Pазмер шишки</label>
+        <input type="text" id="inLength" pattern="^[ 0-9]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
 
-      <button type="button" class="btn" id="btn2"><p>Save</p></button>
-      <button type="reset" class="btn" id="btn3"><p>Clear</p></button>
+      <button type="button" class="btn" id="saveBtn"><p>Save</p></button>
+      <button type="reset" class="btn"><p>Clear</p></button>
     </form>
 
     <h3 id="lef">Лиственное</h3>
@@ -95,10 +106,11 @@
       </div>
     </div>
 
-    <div class="btn" id="saveAllBtn"><p>Save tables</p></div>
     <div class="btn" id="putServBtn">putServ</div>
     <div class="btn" id="takeFromServBtn">Load from Server</div>
+    <button id="getData">getData</button>
 
     <script src="script.js"></script>
+    <script src="fontawesome/js/all.js"></script>
   </body>
 </html>
