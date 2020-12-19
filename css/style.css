@@ -44,4 +44,5 @@ form #btn3 p {
   border: 1px solid black;
   height: max-content;
   min-height: 50px;
+  word-break: break-all;
 }

@@ -10,64 +10,64 @@
   </head>
 
   <body>
-    <div class="btn" id="newPlantbtn"><p>Create</p></div>
+    <div class="btn" id="newPlantBtn"><p>Create</p></div>
     <select id="select1" required>
-      <option value="noneVol" disabled selected>Выберите подкласс</option>
-      <option value="value1">Лиственное</option>
-      <option value="value2">Хвойное</option>
+      <option value="noneVol" disabled selected>Choose the division</option>
+      <option value="value1">The flowering plants</option>
+      <option value="value2">The conifers</option>
     </select>
 
     <form id="maket">
       <h2>New Plant:</h2>
       <p>
-        <label for="inName">Название</label>
+        <label for="inName">Binomial name</label>
         <input type="text" id="inName" required pattern="^[a-zA-Z]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inVid">Вид</label>
-        <input type="text" id="inVid" required pattern="^[a-zA-Z]+$" />
+        <label for="inFamily">Family</label>
+        <input type="text" id="inFamily" required pattern="^[a-zA-Z]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inAge">Возраст</label>
+        <label for="inSpecies">Species</label>
+        <input type="text" id="inSpecies" required pattern="^[a-zA-Z]+$" />
+        <span class="spanTimes"><i class="fas fa-times"></i></span>
+      </p>
+      <p>
+        <label for="inAge">Age, years</label>
         <input type="text" id="inAge" required pattern="^[ 0-9]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inKind">Класс</label>
-        <input type="text" id="inKind" required pattern="^[a-zA-Z]+$" />
+        <label for="inArea">Habitat</label>
+        <input type="text" id="inArea" required pattern="^[a-zA-Z+\s]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p>
-        <label for="inAreal">Ареал произра&shy;ста&shy;ния</label>
-        <input type="text" id="inAreal" required pattern="^[a-zA-Z]+$" />
-        <span class="spanTimes"><i class="fas fa-times"></i></span>
-      </p>
-      <p>
-        <label for="inFirst">Первооткры&shy;ватель</label>
-        <input type="text" id="inFirst" required pattern="^[a-zA-Z]+$" />
+        <label for="inFirst">First describer</label>
+        <input type="text" id="inFirst" required pattern="^[a-zA-Z+\s]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
 
       <p id="Flower">
-        <label for="inFlower">Pазмер соцветия</label>
-        <input type="text" id="inFlower" pattern="^[ 0-9]+$" />
+        <label for="inFlower">Flowers size</label>
+        <input type="text" id="inFlower" pattern="^[a-zA-Z]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p id="KindFlower">
-        <label for="inKindFlower">Тип соцветия</label>
+        <label for="inKindFlower">Flowers color</label>
         <input type="text" id="inKindFlower" pattern="^[a-zA-Z]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
 
-      <p id="Width">
-        <label for="inWidth">Толщина ствола</label>
-        <input type="text" id="inWidth" pattern="^[ 0-9]+$" />
+      <p id="Heigth">
+        <label for="inHeigth">Tree heigth, m</label>
+        <input type="text" id="inHeigth" pattern="^[ 0-9]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
       <p id="Length">
-        <label for="inLength">Pазмер шишки</label>
+        <label for="inLength">Cones length, cm</label>
         <input type="text" id="inLength" pattern="^[ 0-9]+$" />
         <span class="spanTimes"><i class="fas fa-times"></i></span>
       </p>
@@ -76,39 +76,34 @@
       <button type="reset" class="btn"><p>Clear</p></button>
     </form>
 
-    <h3 id="lef">Лиственное</h3>
+    <h3 id="lef">The flowering plants</h3>
     <div id="gridCont1">
-      <div class="gridIt">Название</div>
-      <div class="gridIt">Вид</div>
-      <div class="gridIt">Возраст</div>
-      <div class="gridIt">Класс</div>
-      <div class="gridIt">Ареал произра&shy;стания</div>
-      <div class="gridIt">Первооткры&shy;ватель</div>
-      <div class="gridIt">Размер соцветия</div>
-      <div class="gridIt">Тип соцветия</div>
-      <div class="gridIt">
-        <p></p>
-      </div>
+      <div class="gridIt">Binomial name</div>
+      <div class="gridIt">Family</div>
+      <div class="gridIt">Species</div>
+      <div class="gridIt">Age, years</div>
+      <div class="gridIt">Habitat</div>
+      <div class="gridIt">First describer</div>
+      <div class="gridIt">Flowers size</div>
+      <div class="gridIt">Flowers color</div>
+      <div class="gridIt"></div>
     </div>
 
-    <h3 id="rif">Хвойное</h3>
+    <h3 id="rif">The conifers</h3>
     <div id="gridCont2">
-      <div class="gridIt">Название</div>
-      <div class="gridIt">Вид</div>
-      <div class="gridIt">Возраст</div>
-      <div class="gridIt">Класс</div>
-      <div class="gridIt">Ареал произра&shy;стания</div>
-      <div class="gridIt">Первооткры&shy;ватель</div>
-      <div class="gridIt">Толщина ствола</div>
-      <div class="gridIt">Pазмер шишки</div>
-      <div class="gridIt">
-        <p></p>
-      </div>
+      <div class="gridIt">Binomial name</div>
+      <div class="gridIt">Family</div>
+      <div class="gridIt">Species</div>
+      <div class="gridIt">Age, years</div>
+      <div class="gridIt">Habitat</div>
+      <div class="gridIt">First describer</div>
+      <div class="gridIt">Tree heigth, m</div>
+      <div class="gridIt">Cones length, cm</div>
+      <div class="gridIt"></div>
     </div>
 
     <div class="btn" id="putServBtn">putServ</div>
     <div class="btn" id="takeFromServBtn">Load from Server</div>
-    <button id="getData">getData</button>
 
     <script src="script.js"></script>
     <script src="fontawesome/js/all.js"></script>
