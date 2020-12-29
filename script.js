@@ -209,7 +209,7 @@ saveBtn.addEventListener("click", function () {
 function changePlant() {
   let changeBtns = document.getElementsByClassName("changeBtn");
   for (let changeBtn of changeBtns) {
-    changeBtn.addEventListener("click", function () {
+    changeBtn.onclick = function () {
       let el = changeBtn.parentNode;
       let newplant = myMap.get(el.id);
       select1.style.display = "block";
@@ -248,14 +248,14 @@ function changePlant() {
         el.previousSibling.remove();
       }
       el.remove();
-    });
+    };
   }
 }
 
 function deletePlant() {
   let deleteBtns = document.getElementsByClassName("deleteBtn");
   for (let deleteBtn of deleteBtns) {
-    deleteBtn.addEventListener("click", function () {
+    deleteBtn.onclick = function () {
       let el = deleteBtn.parentNode;
       if (el.parentNode == gridCont1) {
         N1--;
@@ -276,7 +276,7 @@ function deletePlant() {
         el.previousSibling.remove();
       }
       el.remove();
-    });
+    };
   }
 }
 
@@ -292,7 +292,7 @@ putServBtn.addEventListener("click", function () {
     i < responseObj.length + [...myMap].length + 1;
     i++
   ) {
-    data[i] = { id: i, plant: [...myMap][j] };
+    data[i] = { id: i, plant: [...myMap][j][1] };
     j++;
     fetch("http://localhost:3000/plants", {
       method: "post",
@@ -320,9 +320,9 @@ takeFromServBtn.addEventListener("click", function () {
           today.getMinutes() +
           today.getSeconds() +
           i,
-        responseObj[i].plant[1]
+        responseObj[i].plant
       );
-      let newplant = responseObj[i].plant[1];
+      let newplant = responseObj[i].plant;
       if (newplant.flower != undefined) {
         N1++;
         gridCont1.style.setProperty(
@@ -417,6 +417,3 @@ function addGrids(
     i +
     '"><button type="button" class="changeBtn">change</button><button type="button" class="deleteBtn">delete</button></div>';
 }
-
-changePlant();
-deletePlant();

@@ -2,131 +2,107 @@
   "plants": [
     {
       "id": 1,
-      "plant": [
-        "change173580",
-        {
-          "name": "Salvia",
-          "species": "jurisicii",
-          "age": "5",
-          "family": "Lamiaceae",
-          "area": "North Macedonia",
-          "first": "Koshanin",
-          "flower": "small",
-          "kindFlower": "violet"
-        }
-      ]
+      "plant": {
+        "name": "Salvia",
+        "species": "jurisicii",
+        "age": "5",
+        "family": "Lamiaceae",
+        "area": "North Macedonia",
+        "first": "Koshanin",
+        "flower": "small",
+        "kindFlower": "violet"
+      }
     },
     {
       "id": 2,
-      "plant": [
-        "change1745310",
-        {
-          "name": "Rubus",
-          "species": "chamaemorus",
-          "age": "1",
-          "family": "Rosaceae",
-          "area": "Northern Hemisphere",
-          "first": "Resvool",
-          "flower": "small",
-          "kindFlower": "white"
-        }
-      ]
+      "plant": {
+        "name": "Rubus",
+        "species": "chamaemorus",
+        "age": "1",
+        "family": "Rosaceae",
+        "area": "Northern Hemisphere",
+        "first": "Resvool",
+        "flower": "small",
+        "kindFlower": "white"
+      }
     },
     {
       "id": 3,
-      "plant": [
-        "change189450",
-        {
-          "name": "Crocus",
-          "species": "vernus",
-          "age": "2",
-          "family": "Iridaceae",
-          "area": "Balkans",
-          "first": "Eldering",
-          "flower": "small",
-          "kindFlower": "blue"
-        }
-      ]
+      "plant": {
+        "name": "Austrotaxus",
+        "family": "Taxaceae",
+        "species": "spicata",
+        "age": "10",
+        "area": "New Caledonia",
+        "first": "Takenoshin Nakai",
+        "heigth": "15",
+        "length": "2"
+      }
     },
     {
       "id": 4,
-      "plant": [
-        "change1814490",
-        {
-          "name": "Nicandra",
-          "species": "physalodes",
-          "age": "3",
-          "family": "Solanaceae",
-          "area": "South America",
-          "first": "ForbesRoyle",
-          "flower": "big",
-          "kindFlower": "purple"
-        }
-      ]
+      "plant": {
+        "name": "Crocus",
+        "species": "vernus",
+        "age": "2",
+        "family": "Iridaceae",
+        "area": "Balkans",
+        "first": "Eldering",
+        "flower": "small",
+        "kindFlower": "blue"
+      }
     },
     {
       "id": 5,
-      "plant": [
-        "change192760",
-        {
-          "name": "Austrotaxus",
-          "family": "Taxaceae",
-          "species": "spicata",
-          "age": "10",
-          "area": "New Caledonia",
-          "first": "Takenoshin Nakai",
-          "heigth": "15",
-          "length": "2"
-        }
-      ]
+      "plant": {
+        "name": "Nicandra",
+        "species": "physalodes",
+        "age": "3",
+        "family": "Solanaceae",
+        "area": "South America",
+        "first": "ForbesRoyle",
+        "flower": "big",
+        "kindFlower": "purple"
+      }
     },
     {
       "id": 6,
-      "plant": [
-        "change193530",
-        {
-          "name": "Cupressus",
-          "family": "Cupressaceae",
-          "species": "sempervirens",
-          "age": "400",
-          "area": "Mediterranean Basin",
-          "first": "Ovid",
-          "heigth": "35",
-          "length": "3"
-        }
-      ]
+      "plant": {
+        "name": "Cupressus",
+        "family": "Cupressaceae",
+        "species": "sempervirens",
+        "age": "400",
+        "area": "Mediterranean Basin",
+        "first": "Ovid",
+        "heigth": "35",
+        "length": "3"
+      }
     },
     {
       "id": 7,
-      "plant": [
-        "change1941420",
-        {
-          "name": "Picea",
-          "family": "Pinaceae",
-          "species": "abies",
-          "age": "60",
-          "area": "Nothern Europe",
-          "first": "Schweiz",
-          "heigth": "40",
-          "length": "15"
-        }
-      ]
+      "plant": {
+        "name": "Picea",
+        "family": "Pinaceae",
+        "species": "abies",
+        "age": "60",
+        "area": "Nothern Europe",
+        "first": "Schweiz",
+        "heigth": "40",
+        "length": "15"
+      }
     },
     {
       "id": 8,
-      "plant": [
-        "change1943350",
-        {
-          "name": "Sciadopitys",
-          "family": "Sciadopityaceae",
-          "species": "verticillata",
-          "age": "15",
-          "area": "Japan",
-          "first": "Veitch",
-          "heigth": "20",
-          "length": "9"
-        }
-      ]
+      "plant": {
+        "name": "Sciadopitys",
+        "family": "Sciadopityaceae",
+        "species": "verticillata",
+        "age": "15",
+        "area": "Japan",
+        "first": "Veitch",
+        "heigth": "20",
+        "length": "9"
+      }
     }
   ]
 }
