@@ -130,10 +130,7 @@ saveBtn.addEventListener("click", function () {
       newplant.area = inArea.value;
       newplant.first = inFirst.value;
       N1++;
-      gridCont1.style.setProperty(
-        "grid-template-rows",
-        "repeat(" + N1 + ", 50px)"
-      );
+      gridCont1.style.setProperty("grid-template-rows", `repeat( ${N1}, 50px)`);
       addGrids(
         1,
         newplant.name,
@@ -147,11 +144,7 @@ saveBtn.addEventListener("click", function () {
         today
       );
       myMap.set(
-        "change" +
-          today.getHours() +
-          today.getMinutes() +
-          today.getSeconds() +
-          "0",
+        `change${today.getHours()}${today.getMinutes()}${today.getSeconds()}0`,
         newplant
       );
     } else {
@@ -163,10 +156,7 @@ saveBtn.addEventListener("click", function () {
       newplant.area = inArea.value;
       newplant.first = inFirst.value;
       N2++;
-      gridCont2.style.setProperty(
-        "grid-template-rows",
-        "repeat(" + N2 + ", 50px)"
-      );
+      gridCont2.style.setProperty("grid-template-rows", `repeat( ${N2}, 50px)`);
       addGrids(
         2,
         newplant.name,
@@ -180,11 +170,7 @@ saveBtn.addEventListener("click", function () {
         today
       );
       myMap.set(
-        "change" +
-          today.getHours() +
-          today.getMinutes() +
-          today.getSeconds() +
-          "0",
+        `change${today.getHours()}${today.getMinutes()}${today.getSeconds()}0`,
         newplant
       );
     }
@@ -223,7 +209,7 @@ function changePlant() {
         N1--;
         gridCont1.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N1 + ", 50px)"
+          `repeat( ${N1}, 50px)`
         );
         select1.value = "value1";
         makeMaketVisible("value1");
@@ -236,7 +222,7 @@ function changePlant() {
         N2--;
         gridCont2.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N2 + ", 50px)"
+          `repeat( ${N2}, 50px)`
         );
         select1.value = "value2";
         makeMaketVisible("value2");
@@ -261,14 +247,14 @@ function deletePlant() {
         N1--;
         gridCont1.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N1 + ", 50px)"
+          `repeat( ${N1}, 50px)`
         );
       }
       if (el.parentNode == gridCont2) {
         N2--;
         gridCont2.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N2 + ", 50px)"
+          `repeat( ${N2}, 50px)`
         );
       }
       myMap.delete(el.id);
@@ -315,11 +301,7 @@ takeFromServBtn.addEventListener("click", function () {
     let today = new Date();
     for (let i = 0; i < responseObj.length; i++) {
       myMap.set(
-        "change" +
-          today.getHours() +
-          today.getMinutes() +
-          today.getSeconds() +
-          i,
+        `change${today.getHours()}${today.getMinutes()}${today.getSeconds()}${i}`,
         responseObj[i].plant
       );
       let newplant = responseObj[i].plant;
@@ -327,7 +309,7 @@ takeFromServBtn.addEventListener("click", function () {
         N1++;
         gridCont1.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N1 + ", 50px)"
+          `repeat( ${N1}, 50px)`
         );
         addGrids(
           1,
@@ -346,7 +328,7 @@ takeFromServBtn.addEventListener("click", function () {
         N2++;
         gridCont2.style.setProperty(
           "grid-template-rows",
-          "repeat(" + N2 + ", 50px)"
+          `repeat( ${N2}, 50px)`
         );
         addGrids(
           2,
@@ -385,35 +367,16 @@ function addGrids(
   time,
   i = 0
 ) {
-  document.getElementById(`gridCont` + String(type)).innerHTML +=
-    '<div class="gridIt">' +
-    par1 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par2 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par3 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par4 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par5 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par6 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par7 +
-    "</div>" +
-    '<div class="gridIt">' +
-    par8 +
-    "</div>" +
-    '<div class="gridIt" id="change' +
-    time.getHours() +
-    time.getMinutes() +
-    time.getSeconds() +
-    i +
-    '"><button type="button" class="changeBtn">change</button><button type="button" class="deleteBtn">delete</button></div>';
+  document.getElementById(`gridCont${type}`).innerHTML += `
+    <div class="gridIt">${par1}</div>
+    <div class="gridIt">${par2}</div>
+    <div class="gridIt">${par3}</div>
+    <div class="gridIt">${par4}</div>
+    <div class="gridIt">${par5}</div>
+    <div class="gridIt">${par6}</div>
+    <div class="gridIt">${par7}</div>
+    <div class="gridIt">${par8}</div>
+    <div class="gridIt" id="change${time.getHours()}${time.getMinutes()}${time.getSeconds()}${i}">
+      <button type="button" class="changeBtn">change</button><button type="button" class="deleteBtn">delete</button>
+    </div>`;
 }
