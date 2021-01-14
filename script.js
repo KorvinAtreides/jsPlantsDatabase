@@ -354,6 +354,36 @@ takeFromServBtn.addEventListener("click", function () {
   }
 });
 
+clearTable.addEventListener("click", function () {
+  N1 = 1;
+  N2 = 1;
+  myMap.clear();
+  gridCont1.style.setProperty("grid-template-rows", `repeat( ${N1}, 50px)`);
+  gridCont2.style.setProperty("grid-template-rows", `repeat( ${N2}, 50px)`);
+  gridCont1.innerHTML = `
+    <div class="gridIt">Binomial name</div>
+    <div class="gridIt">Family</div>
+    <div class="gridIt">Species</div>
+    <div class="gridIt">Age, years</div>
+    <div class="gridIt">Habitat</div>
+    <div class="gridIt">First describer</div>
+    <div class="gridIt">Flowers size</div>
+    <div class="gridIt">Flowers color</div>
+    <div class="gridIt"></div>
+  `;
+  gridCont2.innerHTML = ` 
+    <div class="gridIt">Binomial name</div>
+    <div class="gridIt">Family</div>
+    <div class="gridIt">Species</div>
+    <div class="gridIt">Age, years</div>
+    <div class="gridIt">Habitat</div>
+    <div class="gridIt">First describer</div>
+    <div class="gridIt">Tree heigth, m</div>
+    <div class="gridIt">Cones length, cm</div>
+    <div class="gridIt"></div>
+  `;
+});
+
 function addGrids(
   type,
   par1,
