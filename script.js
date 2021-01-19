@@ -70,7 +70,6 @@ function makeMaketVisible(val1) {
       color: red;
       font-size: large;`;
   }
-
   if (val1 == "value1") {
     Heigth.style.display = "none";
     Length.style.display = "none";
@@ -93,19 +92,16 @@ function makeMaketVisible(val1) {
 }
 
 function inpytVal() {
-  let inpyts = document.getElementsByTagName("input");
-  for (let inpyt of inpyts) {
-    inpyt.addEventListener("input", function (event) {
-      if (inpyt.validity.valid == false) {
-        inpyt.nextElementSibling.style.cssText = `
-          display: inline-block;
-          color: red;
-          font-size: large;`;
-      } else {
-        inpyt.nextElementSibling.style.cssText = `display: none;`;
-      }
-    });
-  }
+  maket.addEventListener("input", function (event) {
+    if (event.target.validity.valid == false) {
+      event.target.nextElementSibling.style.cssText = `
+             display: inline-block;
+              color: red;
+              font-size: large;`;
+    } else {
+      event.target.nextElementSibling.style.cssText = `display: none;`;
+    }
+  });
 }
 inpytVal();
 
@@ -174,96 +170,76 @@ saveBtn.addEventListener("click", function () {
         newplant
       );
     }
-    changePlant();
-    deletePlant();
-    inName.value = "";
-    inFamily.value = "";
-    inSpecies.value = "";
-    inAge.value = "";
-    inArea.value = "";
-    inFirst.value = "";
-    inFlower.value = "";
-    inKindFlower.value = "";
-    inHeigth.value = "";
-    inLength.value = "";
+    for (let inpyt of inpyts) {
+      inpyt.value = "";
+    }
     select1.style.display = "none";
     select1.value = "noneVol";
     maket.style.display = "none";
   }
 });
 
-function changePlant() {
-  let changeBtns = document.getElementsByClassName("changeBtn");
-  for (let changeBtn of changeBtns) {
-    changeBtn.onclick = function () {
-      let el = changeBtn.parentNode;
-      let newplant = myMap.get(el.id);
-      select1.style.display = "block";
-      inName.value = newplant.name;
-      inFamily.value = newplant.family;
-      inSpecies.value = newplant.species;
-      inAge.value = newplant.age;
-      inArea.value = newplant.area;
-      inFirst.value = newplant.first;
-      if (el.parentNode == gridCont1) {
-        N1--;
-        gridCont1.style.setProperty(
-          "grid-template-rows",
-          `repeat( ${N1}, 50px)`
-        );
-        select1.value = "value1";
-        makeMaketVisible("value1");
-        inFlower.value = newplant.flower;
-        inKindFlower.value = newplant.kindFlower;
-        inHeigth.value = "";
-        inLength.value = "";
-      }
-      if (el.parentNode == gridCont2) {
-        N2--;
-        gridCont2.style.setProperty(
-          "grid-template-rows",
-          `repeat( ${N2}, 50px)`
-        );
-        select1.value = "value2";
-        makeMaketVisible("value2");
-        inHeigth.value = newplant.heigth;
-        inLength.value = newplant.length;
-      }
-      myMap.delete(el.id);
-      for (let i = 1; i < 9; i++) {
-        el.previousSibling.remove();
-      }
-      el.remove();
-    };
+tablesDiv.addEventListener("click", function (event) {
+  if (event.target.type == "button") {
+    if (event.target.classList.value == "changeBtn") {
+      changePlant(event.target);
+    }
+    if (event.target.classList.value == "deleteBtn") {
+      deletePlant(event.target);
+    }
   }
+});
+
+function changePlant(changeBtn) {
+  let el = changeBtn.parentNode;
+  let newplant = myMap.get(el.id);
+  select1.style.display = "block";
+  inName.value = newplant.name;
+  inFamily.value = newplant.family;
+  inSpecies.value = newplant.species;
+  inAge.value = newplant.age;
+  inArea.value = newplant.area;
+  inFirst.value = newplant.first;
+  if (el.parentNode == gridCont1) {
+    N1--;
+    gridCont1.style.setProperty("grid-template-rows", `repeat( ${N1}, 50px)`);
+    select1.value = "value1";
+    makeMaketVisible("value1");
+    inFlower.value = newplant.flower;
+    inKindFlower.value = newplant.kindFlower;
+    inHeigth.value = "";
+    inLength.value = "";
+  }
+  if (el.parentNode == gridCont2) {
+    N2--;
+    gridCont2.style.setProperty("grid-template-rows", `repeat( ${N2}, 50px)`);
+    select1.value = "value2";
+    makeMaketVisible("value2");
+    inHeigth.value = newplant.heigth;
+    inLength.value = newplant.length;
+  }
+  myMap.delete(el.id);
+  for (let i = 1; i < 9; i++) {
+    el.previousElementSibling.remove();
+  }
+  el.remove();
 }
 
-function deletePlant() {
-  let deleteBtns = document.getElementsByClassName("deleteBtn");
-  for (let deleteBtn of deleteBtns) {
-    deleteBtn.onclick = function () {
-      let el = deleteBtn.parentNode;
-      if (el.parentNode == gridCont1) {
-        N1--;
-        gridCont1.style.setProperty(
-          "grid-template-rows",
-          `repeat( ${N1}, 50px)`
-        );
-      }
-      if (el.parentNode == gridCont2) {
-        N2--;
-        gridCont2.style.setProperty(
-          "grid-template-rows",
-          `repeat( ${N2}, 50px)`
-        );
-      }
-      myMap.delete(el.id);
-      for (let i = 1; i < 9; i++) {
-        el.previousSibling.remove();
-      }
-      el.remove();
-    };
+function deletePlant(deleteBtn) {
+  let el = deleteBtn.parentNode;
+  if (el.parentNode == gridCont1) {
+    N1--;
+    gridCont1.style.setProperty("grid-template-rows", `repeat( ${N1}, 50px)`);
   }
+  if (el.parentNode == gridCont2) {
+    N2--;
+    gridCont2.style.setProperty("grid-template-rows", `repeat( ${N2}, 50px)`);
+  }
+  myMap.delete(el.id);
+  for (let i = 1; i < 9; i++) {
+    el.previousElementSibling.remove();
+  }
+  el.remove();
 }
 
 putServBtn.addEventListener("click", function () {
@@ -345,8 +321,6 @@ takeFromServBtn.addEventListener("click", function () {
         );
       }
     }
-    changePlant();
-    deletePlant();
   } else if (status == 404) {
     console.log("Ресурс не найден");
   } else {
