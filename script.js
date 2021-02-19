@@ -247,23 +247,21 @@ putServBtn.addEventListener("click", function () {
   request.open("GET", "http://localhost:3000/plants", false);
   request.send();
   let responseObj = JSON.parse(request.response);
-  let data = [];
   let j = 0;
   for (
     let i = responseObj.length + 1;
     i < responseObj.length + [...myMap].length + 1;
     i++
   ) {
-    data[i] = { id: i, plant: [...myMap][j][1] };
-    j++;
     fetch("http://localhost:3000/plants", {
       method: "post",
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data[i]),
+      body: JSON.stringify({ id: i, plant: [...myMap][j][1] }),
     });
+    j++;
   }
 });
 
