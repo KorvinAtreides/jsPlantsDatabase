@@ -9,6 +9,13 @@
   min-height: 30px;
   height: max-content;
 }
+.btn:hover {
+  cursor: pointer;
+}
+.btn:active {
+  color: blanchedalmond;
+  background-color: rgb(20, 20, 124);
+}
 .btn p {
   margin: 0px;
 }
